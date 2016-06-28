@@ -1,0 +1,7 @@
+<?php declare(strict_types=1); ?>
+<?php foreach ($this->results as $result) { ?>
+    <p class="result <?= $this->escape($result->getType()); ?>"><?= $this->translate($result->getMessage()); ?></p>
+    <?php if ($result->getExtraData()) { ?>
+        <p class="result extra-data"><?= $this->escape($result->getExtraData()); ?></p>
+    <?php } ?>
+<?php } ?>

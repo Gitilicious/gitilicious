@@ -1,0 +1,77 @@
+<?php declare(strict_types=1); ?>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title><?= $this->translate('site.title'); ?></title>
+        <link href='https://fonts.googleapis.com/css?family=Roboto:400,700,400italic' rel='stylesheet' type='text/css'>
+        <link href="/css/bootstrap.min.css" rel="stylesheet">
+        <link href="/css/animate.min.css" rel="stylesheet">
+        <link href="/css/font-awesome.min.css" rel="stylesheet">
+        <link href="/css/custom.css" rel="stylesheet">
+    </head>
+    <body>
+        <nav class="navbar navbar-default navbar-static-top">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#"><?= $this->translate('site.title'); ?></a>
+                </div>
+                <?php if (!isset($this->hideNavigation)) { ?>
+                    <div id="navbar" class="navbar-collapse collapse">
+                        <?php if ($this->user->isLoggedIn()) { ?>
+                            <ul class="nav navbar-nav" data-dropdown-in="zoomIn" data-dropdown-out="zoomOut">
+                                <li class="active"><a href="#"><?= $this->translate('nav.dashboard'); ?></a></li>
+                                <li><a href="#about">Settings</a></li>
+                                <li><a href="#contact"><span class="label label-pill label-danger">10</span> Notifications</a></li>
+                                <li><a href="#about">Projects</a></li>
+                            </ul>
+                            <ul class="nav navbar-nav navbar-right">
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                        <img src="https://avatars0.githubusercontent.com/u/1330296?v=3&s=460" class="avatar" style="width: 50px; border-radius: 50px;">
+                                        Pieter Hordijk <span class="caret"></span>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="#">Action</a></li>
+                                        <li><a href="#">Another action</a></li>
+                                        <li><a href="#">Something else here</a></li>
+                                        <li role="separator" class="divider"></li>
+                                        <li class="dropdown-header">Nav header</li>
+                                        <li><a href="#">Separated link</a></li>
+                                        <li><a href="#">One more separated link</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        <?php } ?>
+                    </div>
+                <?php } ?>
+            </div>
+        </nav>
+        <?= $content; ?>
+        <footer class="footer">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-6">© 2016 Gitilicious · Version: 0.1.0</div>
+                    <div class="col-md-6 text-right"><a href="http://github.com/Gitilicious/gitilicious" target="_blank"><i class="fa fa-github"></i></a></div>
+                </div>
+            </div>
+        </footer>
+        <script src="/js/jquery-1.12.4.min.js"></script>
+        <script src="/js/dropdown-animations.js"></script>
+        <script src="/js/bootstrap.min.js"></script>
+        <?php if (isset($this->extraJs)) { ?>
+            <?php foreach ($this->extraJs as $script) { ?>
+                <script src="<?= $this->escape($script); ?>"></script>
+            <?php } ?>
+        <?php } ?>
+        <script src="/js/custom.js"></script>
+    </body>
+</html>

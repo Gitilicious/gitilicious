@@ -1,0 +1,182 @@
+<?php declare(strict_types=1); ?>
+<form method="post" class="install">
+    <div class="subheader">
+        <h1>Installation</h1>
+        <ul class="actions">
+            <li><button type="submit" class="btn btn-danger"><i class="fa fa-fw fa-check"></i> Save</button></li>
+        </ul>
+    </div>
+    <div id="main-content" class="container-fluid">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <h2>Administrator</h2>
+                    <div class="form-group <?php if (!$this->form['username']->isValid()) echo 'has-error'; ?>">
+                        <label class="control-label" for="username">Username</label>
+                        <input class="form-control" id="username" name="username" type="text" placeholder="Username" value="<?= $this->escape($this->form['username']->getValue()); ?>">
+                        <?php if (!$this->form['username']->isValid()) { ?>
+                            <p class="error"><?= $this->translate('form.error.' . $this->form['username']->getErrorType()); ?></p>
+                        <?php } ?>
+                    </div>
+                    <div class="form-group <?php if (!$this->form['password']->isValid()) echo 'has-error'; ?>">
+                        <label class="control-label" for="password">Password</label>
+                        <input class="form-control" id="password" name="password" type="password" placeholder="Password">
+                        <?php if (!$this->form['password']->isValid()) { ?>
+                            <p class="error"><?= $this->translate('form.error.' . $this->form['password']->getErrorType()); ?></p>
+                        <?php } ?>
+                    </div>
+                    <div class="form-group <?php if (!$this->form['password2']->isValid()) echo 'has-error'; ?>">
+                        <label class="control-label" for="password2">Repeat password</label>
+                        <input class="form-control" id="password2" name="password2" type="password" placeholder="Repeat password">
+                        <?php if (!$this->form['password2']->isValid()) { ?>
+                            <p class="error"><?= $this->translate('form.error.' . $this->form['password2']->getErrorType()); ?></p>
+                        <?php } ?>
+                    </div>
+                    <div class="form-group <?php if (!$this->form['name']->isValid()) echo 'has-error'; ?>">
+                        <label class="control-label" for="name">Name</label>
+                        <input class="form-control" id="name" name="name" type="text" placeholder="Name" value="<?= $this->escape($this->form['name']->getValue()); ?>">
+                        <?php if (!$this->form['name']->isValid()) { ?>
+                            <p class="error"><?= $this->translate('form.error.' . $this->form['name']->getErrorType()); ?></p>
+                        <?php } ?>
+                    </div>
+                    <div class="form-group <?php if (!$this->form['email']->isValid()) echo 'has-error'; ?>" value="<?= $this->escape($this->form['email']->getValue()); ?>">
+                        <label class="control-label" for="email">Email address</label>
+                        <input class="form-control" id="email" name="email" type="email" placeholder="Email address">
+                        <?php if (!$this->form['email']->isValid()) { ?>
+                            <p class="error"><?= $this->translate('form.error.' . $this->form['email']->getErrorType()); ?></p>
+                        <?php } ?>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <h2>Database</h2>
+                    <div class="form-group <?php if (!$this->form['dbname']->isValid()) echo 'has-error'; ?>">
+                        <label class="control-label" for="dbname">Name</label>
+                        <input class="form-control" id="dbname" name="dbname" type="text" placeholder="Name" value="<?= $this->escape($this->form['dbname']->getValue()); ?>">
+                        <?php if (!$this->form['dbname']->isValid()) { ?>
+                            <p class="error"><?= $this->translate('form.error.' . $this->form['dbname']->getErrorType()); ?></p>
+                        <?php } ?>
+                    </div>
+                    <div class="form-group <?php if (!$this->form['dbhostname']->isValid()) echo 'has-error'; ?>">
+                        <label class="control-label" for="dbhostname">Hostname</label>
+                        <input class="form-control" id="dbhostname" name="dbhostname" type="text" placeholder="Hostname" value="<?= $this->escape($this->form['dbhostname']->getValue()); ?>">
+                        <?php if (!$this->form['dbhostname']->isValid()) { ?>
+                            <p class="error"><?= $this->translate('form.error.' . $this->form['dbhostname']->getErrorType()); ?></p>
+                        <?php } ?>
+                    </div>
+                    <div class="form-group <?php if (!$this->form['dbusername']->isValid()) echo 'has-error'; ?>">
+                        <label class="control-label" for="dbusername">Username</label>
+                        <input class="form-control" id="dbusername" name="dbusername" type="text" placeholder="Username" value="<?= $this->escape($this->form['dbusername']->getValue()); ?>">
+                        <?php if (!$this->form['dbhostname']->isValid()) { ?>
+                            <p class="error"><?= $this->translate('form.error.' . $this->form['dbusername']->getErrorType()); ?></p>
+                        <?php } ?>
+                    </div>
+                    <div class="form-group <?php if (!$this->form['dbpassword']->isValid()) echo 'has-error'; ?>">
+                        <label class="control-label" for="dbpassword">Password</label>
+                        <input class="form-control" id="dbpassword" name="dbpassword" type="password" placeholder="Password">
+                        <?php if (!$this->form['dbpassword']->isValid()) { ?>
+                            <p class="error"><?= $this->translate('form.error.' . $this->form['dbpassword']->getErrorType()); ?></p>
+                        <?php } ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <h2>Git</h2>
+                    <div class="form-group <?php if (!$this->form['gitbinary']->isValid()) echo 'has-error'; ?>">
+                        <label class="control-label" for="gitbinary">Git binary</label>
+                        <input class="form-control" id="gitbinary" name="gitbinary" type="text" placeholder="Git binary" value="<?= $this->escape($this->form['gitbinary']->getValue()); ?>">
+                        <?php if (!$this->form['gitbinary']->isValid()) { ?>
+                            <p class="error"><?= $this->translate('form.error.' . $this->form['gitbinary']->getErrorType()); ?></p>
+                        <?php } ?>
+                    </div>
+                    <div class="form-group <?php if (!$this->form['repodir']->isValid()) echo 'has-error'; ?>">
+                        <label class="control-label" for="repodir">Repository directory</label>
+                        <input class="form-control" id="repodir" name="repodir" type="text" placeholder="Repository directory" value="<?= $this->escape($this->form['repodir']->getValue()); ?>">
+                        <?php if (!$this->form['repodir']->isValid()) { ?>
+                            <p class="error"><?= $this->translate('form.error.' . $this->form['repodir']->getErrorType()); ?></p>
+                        <?php } ?>
+                    </div>
+                </div>
+                <div class="card">
+                    <h2>Interface</h2>
+                    <div class="form-group <?php if (!$this->form['theme']->isValid()) echo 'has-error'; ?>">
+                        <label class="control-label" for="theme">Theme</label>
+                        <select class="form-control" id="theme" name="theme">
+                            <option value="Default" <?php if ($this->form['theme']->getValue() === 'Default') echo 'selected'; ?>>Default</option>
+                        </select>
+                        <?php if (!$this->form['theme']->isValid()) { ?>
+                            <p class="error"><?= $this->translate('form.error.' . $this->form['theme']->getErrorType()); ?></p>
+                        <?php } ?>
+                    </div>
+                    <div class="form-group <?php if (!$this->form['language']->isValid()) echo 'has-error'; ?>">
+                        <label class="control-label" for="language">Language</label>
+                        <select class="form-control" id="language" name="language">
+                            <option value="en_US" <?php if ($this->form['language']->getValue() === 'en_US') echo 'selected'; ?>>Simplified English</option>
+                        </select>
+                        <?php if (!$this->form['language']->isValid()) { ?>
+                            <p class="error"><?= $this->translate('form.error.' . $this->form['language']->getErrorType()); ?></p>
+                        <?php } ?>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <h2>Email</h2>
+                    <div class="form-group <?php if (!$this->form['mailtransport']->isValid()) echo 'has-error'; ?>">
+                        <label class="control-label" for="mailtransport">Mail transport</label>
+                        <select class="form-control" id="mailtransport" name="mailtransport">
+                            <option value="sendmail" <?php if ($this->form['mailtransport']->getValue() === 'sendmail') echo 'selected'; ?>>Sendmail</option>
+                            <option value="smtp" <?php if ($this->form['mailtransport']->getValue() === 'smtp') echo 'selected'; ?>>Smtp</option>
+                        </select>
+                        <?php if (!$this->form['mailtransport']->isValid()) { ?>
+                            <p class="error"><?= $this->translate('form.error.' . $this->form['mailtransport']->getErrorType()); ?></p>
+                        <?php } ?>
+                    </div>
+                    <div class="form-group <?php if (!$this->form['mailusername']->isValid()) echo 'has-error'; ?>">
+                        <label class="control-label" for="mailusername">Username</label>
+                        <input class="form-control" id="mailusername" name="mailusername" type="text" placeholder="Username" disabled value="<?= $this->escape($this->form['mailusername']->getValue()); ?>">
+                        <?php if (!$this->form['mailusername']->isValid()) { ?>
+                            <p class="error"><?= $this->translate('form.error.' . $this->form['mailusername']->getErrorType()); ?></p>
+                        <?php } ?>
+                    </div>
+                    <div class="form-group <?php if (!$this->form['mailpassword']->isValid()) echo 'has-error'; ?>">
+                        <label class="control-label" for="mailpassword">Password</label>
+                        <input class="form-control" id="mailpassword" name="mailpassword" type="text" placeholder="Password" disabled>
+                        <?php if (!$this->form['mailpassword']->isValid()) { ?>
+                            <p class="error"><?= $this->translate('form.error.' . $this->form['mailpassword']->getErrorType()); ?></p>
+                        <?php } ?>
+                    </div>
+                    <div class="form-group <?php if (!$this->form['mailhostname']->isValid()) echo 'has-error'; ?>">
+                        <label class="control-label" for="mailhostname">Hostname</label>
+                        <input class="form-control" id="mailhostname" name="mailhostname" type="text" placeholder="Hostname" disabled value="<?= $this->escape($this->form['mailhostname']->getValue()); ?>">
+                        <?php if (!$this->form['mailhostname']->isValid()) { ?>
+                            <p class="error"><?= $this->translate('form.error.' . $this->form['mailhostname']->getErrorType()); ?></p>
+                        <?php } ?>
+                    </div>
+                    <div class="form-group <?php if (!$this->form['mailport']->isValid()) echo 'has-error'; ?>">
+                        <label class="control-label" for="mailport">Port</label>
+                        <input class="form-control" id="mailport" name="mailport" type="text" placeholder="Port" disabled value="<?= $this->escape($this->form['mailport']->getValue()); ?>">
+                        <?php if (!$this->form['mailport']->isValid()) { ?>
+                            <p class="error"><?= $this->translate('form.error.' . $this->form['mailport']->getErrorType()); ?></p>
+                        <?php } ?>
+                    </div>
+                    <div class="form-group <?php if (!$this->form['mailssl']->isValid()) echo 'has-error'; ?>">
+                        <div class="checkbox">
+                            <label class="control-label" for="mailssl">
+                                <input id="mailssl" name="mailssl" type="checkbox" value="1" placeholder="SSL" disabled <?php if ($this->form['mailssl']->getValue() === '1') echo 'checked'; ?>>
+                                SSL
+                            </label>
+                        </div>
+                        <?php if (!$this->form['mailssl']->isValid()) { ?>
+                            <p class="error"><?= $this->translate('form.error.' . $this->form['mailssl']->getErrorType()); ?></p>
+                        <?php } ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
